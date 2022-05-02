@@ -46,6 +46,9 @@ let TracingService = class TracingService {
     getTracingListByClient(name) {
         return this.tracingRepository.getTracingListByClient(name);
     }
+    getAllTracingList() {
+        return this.tracingRepository.getAllTracing();
+    }
 };
 TracingService = __decorate([
     (0, tsyringe_1.autoInjectable)(),

@@ -17,7 +17,6 @@ export class TracingHistoryService implements ITracingHistoryService{
 
 
     async save(tracingHistory: TracingHistoryModel): Promise<boolean> {
-        console.log("insertando");
         let insert = await this.tracingRepository.save(tracingHistory);
         return Promise.resolve(true);
     }
@@ -25,18 +24,41 @@ export class TracingHistoryService implements ITracingHistoryService{
     async isForSave(tracing: TracingModel,currentTracingHistory:TracingHistoryModel): Promise<boolean> {
         let tracingHistory = await this.tracingRepository.getTracingHistoryById(tracing);
         let changeType = "";
-        if (currentTracingHistory.decimalPrice != tracingHistory[0].decimalPrice && currentTracingHistory.decimalPrice!=0) changeType=changeType+"precio, "
-        if (currentTracingHistory.isOutStock != tracingHistory[0].isOutStock) changeType=changeType+"stock, "
-        if (currentTracingHistory.PromotionType != tracingHistory[0].PromotionType) changeType=changeType+"promoción, "
-        if (currentTracingHistory.isSale != tracingHistory[0].isSale) changeType=changeType+"oferta, "
+        if (tracingHistory.length>0) {
+            if (currentTracingHistory.decimalPrice != tracingHistory[0].decimalPrice && currentTracingHistory.decimalPrice != 0) {
+                changeType = changeType + "precio, "
 
+            }
+            if (currentTracingHistory.isOutStock != tracingHistory[0].isOutStock) {
+                if (currentTracingHistory.isOutStock) {
+                    changeType = changeType + "sin stock, "
+                } else {
+                    changeType = changeType + "retorno stock, "
+                }
+            }
+            if (currentTracingHistory.PromotionType != tracingHistory[0].PromotionType) {
+                if (currentTracingHistory.PromotionType.length > 0) {
+                    changeType = changeType + "Inicio promoción, "
+                } else {
+                    changeType = changeType + "Fin promoción, "
+                }
+            }
+            if (currentTracingHistory.isSale != tracingHistory[0].isSale) {
+                if (currentTracingHistory.isSale) {
+                    changeType = changeType + "inicio oferta, "
+
+                } else {
+                    changeType = changeType + "fin oferta, "
+                }
+            }
+        }
         currentTracingHistory.changeType = changeType
         console.log("TIPO:"+changeType);
         if (tracingHistory.length === 0){
             console.log(currentTracingHistory.decimalPrice);
             return true;
         }
-        currentTracingHistory.previousDecimalPrice = tracingHistory[0].previousDecimalPrice;
+        currentTracingHistory.previousDecimalPrice = tracingHistory[0].decimalPrice;
         console.log(tracingHistory[0].decimalPrice + ' ' + currentTracingHistory.decimalPrice)
         if (currentTracingHistory.isOutStock != tracingHistory[0].isOutStock){
             if (currentTracingHistory.decimalPrice === 0){

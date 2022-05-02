@@ -30,6 +30,7 @@ const errorTracing_service_1 = require("../services/errorTracing.service");
 // noinspection DuplicatedCode
 let ScrappingController = class ScrappingController {
     constructor(alcampoService, tuTrebolService, carrefourService, elcorteinglesService, tracingService, tracingHistoryService, errorTracingService) {
+        this.contador = 0;
         this.alcampoService = alcampoService;
         this.carrefourService = carrefourService;
         this.tutrebolService = tuTrebolService;
@@ -55,12 +56,25 @@ let ScrappingController = class ScrappingController {
             throw "No existe un service para el campo " + distributor;
         });
     }
-    scrapingInit(clientName) {
+    scrapingInit() {
         return __awaiter(this, void 0, void 0, function* () {
-            let tracingList = yield this.tracingService.getTracingListByClient(clientName);
-            // let tracingList: Array<TracingModel> = await this.tracingService.getTracingListByClientCpPostalCode(clientName, 'El Corte Inglés', 38001);
-            for (let i = 0; i < tracingList.length; i++) {
-                console.log("Vamos por el [ " + i + " ]de [ " + tracingList.length + " ]");
+            let tracingList = yield this.tracingService.getAllTracingList();
+            let thread = 9;
+            let itemPerThread = tracingList.length / thread | 0;
+            // let rest = tracingList.length - itemPerThread * thread;
+            // let itemslastThread = itemPerThread + rest;
+            for (let i = 0; i < thread - 1; i++) {
+                this.startThread(tracingList, i * itemPerThread, (i + 1) * itemPerThread);
+            }
+            this.startThread(tracingList, itemPerThread * (thread - 1), tracingList.length);
+        });
+    }
+    startThread(tracingList, from, to) {
+        return __awaiter(this, void 0, void 0, function* () {
+            for (let i = from; i < to; i++) {
+                this.contador = this.contador + 1;
+                console.log("Vamos por el [ " + i + " ]de [ " + to + " ]");
+                console.log("Total scrapper: " + this.contador);
                 yield this.scrapingFromTracing(tracingList[i]);
             }
         });
@@ -107,14 +121,16 @@ let ScrappingController = class ScrappingController {
                         maxRetry = 0;
                     }
                     else {
-                        maxRetry = maxRetry - 1;
-                        if (e.response.status === 429) {
-                            console.log('El hilo esta ocupado, a dormir 30sec ');
-                            yield sleep(30000);
-                            maxRetry = maxRetry + 1;
-                        }
-                        if (e.response.status === 500) {
-                            yield sleep(10000);
+                        maxRetry = maxRetry - 1; //ENOTFOUND
+                        if (e.code !== 'ECONNRESET') {
+                            if (e.response.status === 429) {
+                                console.log('El hilo esta ocupado, a dormir 30sec ');
+                                yield sleep(30000);
+                                maxRetry = maxRetry + 1;
+                            }
+                            if (e.response.status === 500) {
+                                yield sleep(10000);
+                            }
                         }
                     }
                     if (maxRetry === 0) {
@@ -129,12 +145,9 @@ let ScrappingController = class ScrappingController {
     }
     init() {
         return __awaiter(this, void 0, void 0, function* () {
-            let clients = ["DinoSol", "Arias"];
             // await this.scrapingErrors()
-            for (let i = 0; i < 1; i++) {
-                console.log("Empezando con el CLIENTE" + clients[i]);
-                yield this.scrapingInit(clients[i]);
-            }
+            console.log("TESTEANDO 2");
+            yield this.scrapingInit();
         });
     }
 };

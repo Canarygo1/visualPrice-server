@@ -10,6 +10,5 @@ export async function scrapingBeeSearch(cookies: object,url:string) {
         },
         cookies: cookies,
     });
-
     return response;
 }

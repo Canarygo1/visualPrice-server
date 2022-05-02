@@ -38,7 +38,9 @@ let TracingHistoryRepository = class TracingHistoryRepository {
                 is_out_stock: tracingHistory.isOutStock,
                 promotion_type: tracingHistory.PromotionType,
                 sale_type: tracingHistory.saleType,
-                tracing_id: tracingHistory.tracingId
+                tracing_id: tracingHistory.tracingId,
+                change_type: tracingHistory.changeType,
+                previous_decimal_price: tracingHistory.previousDecimalPrice
             });
             return true;
         });

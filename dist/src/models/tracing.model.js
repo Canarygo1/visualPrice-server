@@ -43,10 +43,12 @@ class TracingModel {
         return this._url;
     }
     set url(value) {
-        this.hadChange = true;
-        this.status = 'Confirmado';
-        this.searchType = 'URL';
-        this._url = value;
+        if (value.length > 0) {
+            this.hadChange = true;
+            this.status = 'Confirmado';
+            this.searchType = 'URL';
+            this._url = value;
+        }
     }
     get searchType() {
         return this._searchType;

@@ -24,8 +24,8 @@ const prueba = async () => {
 const testQuery = async ()=>{
     const client = createClient(SUPABASE_URL, SUPABASE_KEY)
     const { user, error } = await client.auth.signUp({
-        email: 'dinosol@visualprice.com',
-        password: 'dinosol2022',
+        email: 'demo@visualprice.com',
+        password: 'demo2022',
     });
     // const { user, error } = await client.auth.signIn({
     //     email: 'contacto@visualprice.com',

@@ -8,15 +8,8 @@ import {CarrefourService} from "../services/carrefour.service";
 import {ElCorteInglesService} from "../services/elcorteingles.service";
 import {TuTrebolService} from "../services/tutrebol.service";
 import {TracingHistoryModel} from "../models/tracingHistory.model";
-import {
-    alcampoParseCurrency,
-    alcampoParseCurrency2,
-    parseContainerToCurrency,
-    parseCurrency
-} from "../utils/parseCurrency";
 import {ErrorTracingModel} from "../models/error.model";
 import {ErrorTracingService, IErrorTracingService} from "../services/errorTracing.service";
-import {AxiosError} from "axios";
 
 // noinspection DuplicatedCode
 @autoInjectable()
@@ -28,7 +21,7 @@ export class ScrappingController {
     tracingService: ITracingService;
     tracingHistoryService: ITracingHistoryService;
     errorTracingService: IErrorTracingService;
-
+    contador =0;
     constructor(alcampoService: AlcampoService,
                 tuTrebolService: TuTrebolService,
                 carrefourService: CarrefourService, elcorteinglesService: ElCorteInglesService, tracingService: TracingService,
@@ -55,12 +48,25 @@ export class ScrappingController {
         throw "No existe un service para el campo " + distributor;
     }
 
-    async scrapingInit(clientName: string) {
-        let tracingList: Array<TracingModel> = await this.tracingService.getTracingListByClient(clientName);
-        // let tracingList: Array<TracingModel> = await this.tracingService.getTracingListByClientCpPostalCode(clientName, 'El Corte Inglés', 38001);
-        for (let i = 0; i < tracingList.length; i++) {
-            console.log("Vamos por el [ " + i + " ]de [ " + tracingList.length + " ]")
+    async scrapingInit() {
+        let tracingList: Array<TracingModel> = await this.tracingService.getAllTracingList();
+        let thread = 9;
+        let itemPerThread =  tracingList.length/thread|0;
+        // let rest = tracingList.length - itemPerThread * thread;
+        // let itemslastThread = itemPerThread + rest;
+        for (let i = 0;i<thread-1;i++){
+            this.startThread(tracingList,i*itemPerThread,(i+1)*itemPerThread)
+        }
+        this.startThread(tracingList,itemPerThread*(thread-1),tracingList.length)
+    }
+    async startThread(tracingList:any,from:number,to:number){
+        for (let i = from;i < to; i++) {
+            this.contador = this.contador+1;
+            console.log("Vamos por el [ " + i + " ]de [ " + to + " ]")
+            console.log("Total scrapper: "+this.contador)
+
             await this.scrapingFromTracing(tracingList[i]);
+
         }
     }
 
@@ -100,17 +106,20 @@ export class ScrappingController {
 
             } catch (e: any) {
                 console.log(e)
+
                 if (e === 'Resource not loaded') {
                     maxRetry = 0;
                 } else {
-                    maxRetry = maxRetry - 1;
-                    if (e.response.status === 429) {
-                        console.log('El hilo esta ocupado, a dormir 30sec ');
-                        await sleep(30000);
-                        maxRetry = maxRetry + 1;
-                    }
-                    if (e.response.status === 500) {
-                        await sleep(10000);
+                    maxRetry = maxRetry - 1;//ENOTFOUND
+                    if (e.code!=='ECONNRESET') {
+                        if (e.response.status === 429) {
+                            console.log('El hilo esta ocupado, a dormir 30sec ');
+                            await sleep(30000);
+                            maxRetry = maxRetry + 1;
+                        }
+                        if (e.response.status === 500) {
+                            await sleep(10000);
+                        }
                     }
                 }
                 if (maxRetry === 0) {
@@ -125,12 +134,10 @@ export class ScrappingController {
     }
 
     async init() {
-        let clients = ["DinoSol", "Arias"];
         // await this.scrapingErrors()
-        for (let i = 0; i < 1; i++) {
-            console.log("Empezando con el CLIENTE" + clients[i]);
-            await this.scrapingInit(clients[i]);
-        }
+            console.log("TESTEANDO 2")
+            await this.scrapingInit();
+
     }
 }
 

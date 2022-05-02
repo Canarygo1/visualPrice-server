@@ -14,7 +14,10 @@ const supabaseConnector_1 = require("./src/utils/supabaseConnector");
 const tsyringe_1 = require("tsyringe");
 const srapping_controller_1 = require("./src/controllers/srapping.controller");
 const _ = require('lodash');
-init();
+const express = require('express');
+const app = express();
+const port = 3300;
+const cron = require('node-cron');
 function init() {
     return __awaiter(this, void 0, void 0, function* () {
         let supabaseConnector = new supabaseConnector_1.SupabaseConnector().client;
@@ -26,10 +29,25 @@ function init() {
         };
         const test = [];
         const scrapingController = tsyringe_1.container.resolve(srapping_controller_1.ScrappingController);
+        console.log("TESTEANDO");
         scrapingController.init();
         // const distributorRepository = container.resolve(DistributorRepository);
         // let distributors = await distributorRepository.getAllDistributors();
         // console.log(distributors);
     });
 }
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+cron.schedule('38 09 * * *', function () {
+    console.log('hola');
+    init();
+}, {
+    scheduled: true,
+    timezone: "Atlantic/Canary"
+});
+app.listen(port, () => {
+    init();
+    console.log(`Example app listening on port ${port}`);
+});
 //# sourceMappingURL=index.js.map

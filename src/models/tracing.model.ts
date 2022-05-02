@@ -61,10 +61,12 @@ export class TracingModel implements ITracing{
     }
 
     set url(value: string) {
-        this.hadChange = true;
-        this.status = 'Confirmado';
-        this.searchType = 'URL'
-        this._url = value;
+        if (value.length>0){
+            this.hadChange = true;
+            this.status = 'Confirmado';
+            this.searchType = 'URL'
+            this._url = value;
+        }
     }
 
     get searchType(): string {

@@ -1,13 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10b2e4f8-5844-49eb-8f5e-ff34e677e381" name="Changes" comment="" />
+    <list default="true" id="10b2e4f8-5844-49eb-8f5e-ff34e677e381" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test_sraper/Productos-Tabla.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test_sraper/Referencias.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test_sraper/database_clientProduct.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test_sraper/loadProducts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test_sraper/tracing_creation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/controllers/srapping.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/controllers/srapping.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/controllers/srapping.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/controllers/srapping.controller.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/models/tracing.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/models/tracing.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/models/tracing.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/models/tracing.model.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/repository/tracing.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/repository/tracing.repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/repository/tracing.repository.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/repository/tracing.repository.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/repository/tracingHistory.repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/repository/tracingHistory.repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/repository/tracingHistory.repository.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/repository/tracingHistory.repository.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/services/TracingHistory.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/services/TracingHistory.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/services/TracingHistory.service.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/services/TracingHistory.service.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/services/tracing.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/services/tracing.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/services/tracing.service.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/services/tracing.service.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/utils/ScrapingBeeSearch.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/utils/ScrapingBeeSearch.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/srapping.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/srapping.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/tracing.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/tracing.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repository/tracing.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/tracing.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repository/tracingHistory.repository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/tracingHistory.repository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/TracingHistory.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/TracingHistory.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/tracing.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/tracing.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test_sraper/query.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_sraper/query.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test_sraper/queryTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_sraper/queryTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/ScrapingBeeSearch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ScrapingBeeSearch.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="ProjectId" id="26pr1ms9HctCDzRzEANJHYCbNOp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -18,8 +72,31 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test_sraper" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -30,10 +107,57 @@
       <option name="presentableId" value="Default" />
       <updated>1648131156045</updated>
       <workItem from="1648131157753" duration="60000" />
+      <workItem from="1648131319100" duration="678000" />
+      <workItem from="1648151223154" duration="4088000" />
+      <workItem from="1648247941058" duration="10309000" />
+      <workItem from="1648415809372" duration="9602000" />
+      <workItem from="1648690658314" duration="9848000" />
+      <workItem from="1649102875916" duration="6775000" />
+      <workItem from="1649275309753" duration="8944000" />
+      <workItem from="1649329422290" duration="607000" />
+      <workItem from="1649330623835" duration="507000" />
+      <workItem from="1649367107746" duration="6027000" />
+      <workItem from="1649452709039" duration="2087000" />
+      <workItem from="1649531382086" duration="4020000" />
+      <workItem from="1649628417743" duration="10446000" />
+      <workItem from="1649706813899" duration="854000" />
+      <workItem from="1649708156428" duration="6929000" />
+      <workItem from="1649756644205" duration="598000" />
+      <workItem from="1649835160362" duration="5934000" />
+      <workItem from="1650103661417" duration="4699000" />
+      <workItem from="1650272379970" duration="652000" />
+      <workItem from="1650316861093" duration="1849000" />
+      <workItem from="1650393850420" duration="1465000" />
+      <workItem from="1650446033256" duration="2426000" />
+      <workItem from="1650483733642" duration="2051000" />
+      <workItem from="1650573733328" duration="3772000" />
+      <workItem from="1650698180458" duration="2122000" />
+      <workItem from="1650743232049" duration="1210000" />
+      <workItem from="1650836486439" duration="2699000" />
+      <workItem from="1650884039738" duration="3193000" />
+      <workItem from="1650922565579" duration="2379000" />
+      <workItem from="1650971677269" duration="1538000" />
+      <workItem from="1651008505809" duration="638000" />
+      <workItem from="1651092353898" duration="6972000" />
+      <workItem from="1651476257763" duration="3000" />
+      <workItem from="1651476266922" duration="1534000" />
+      <workItem from="1651481806085" duration="1476000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

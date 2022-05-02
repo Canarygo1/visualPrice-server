@@ -36,11 +36,16 @@ export class TracingService implements ITracingService{
         return this.tracingRepository.getTracingListByClient(name);
     }
 
+    getAllTracingList(): Promise<Array<TracingModel>> {
+        return this.tracingRepository.getAllTracing();
+    }
+
 
 }
 
 export interface ITracingService{
     getTracingListByDistributor():Promise<Array<TracingModel>>;
+    getAllTracingList():Promise<Array<TracingModel>>;
     getTracingListByClient(client:string):Promise<Array<TracingModel>>;
     updateTracing(tracing:TracingModel):Promise<boolean>;
     getTracingListByClientCpPostalCode(clientName:string,distributorName:string,postalCode:Number):Promise<Array<TracingModel>>

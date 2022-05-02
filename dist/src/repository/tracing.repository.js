@@ -21,20 +21,42 @@ class TracingRepository {
             let data = yield this.supabaseConnector
                 .from('Tracing')
                 .select(`
-    *,
-    Distributor (
-      *
-    ),
-    Postal_Code(
-    *
-    ),
-    Product(
-    *
-    )
-  `);
+                *,
+                Distributor!inner(*),
+                Postal_Code!inner(*),
+                Product(*),
+                Client!inner(*)
+              `)
+                .order("id", { ascending: true })
+                .range(0, 1000);
+            let data2 = yield this.supabaseConnector
+                .from('Tracing')
+                .select(`
+                *,
+                Distributor!inner(*),
+                Postal_Code!inner(*),
+                Product(*),
+                Client!inner(*)
+              `)
+                .order("id", { ascending: true })
+                .range(1000, 2000);
+            let data3 = yield this.supabaseConnector
+                .from('Tracing')
+                .select(`
+                *,
+                Distributor!inner(*),
+                Postal_Code!inner(*),
+                Product(*),
+                Client!inner(*)
+              `)
+                .order("id", { ascending: true })
+                .range(2000, 3000);
             let tracingList = [];
             if (data.body) {
                 let tracingData = data.body;
+                tracingData = tracingData.concat(data2.body);
+                tracingData = tracingData.concat(data3.body);
+                console.log(tracingData.length);
                 for (let i = 0; i < tracingData.length; i++) {
                     let tracing = tracing_model_1.TracingModel.fromDTO(tracingData[i]);
                     tracingList.push(tracing);
@@ -125,6 +147,7 @@ class TracingRepository {
                 Client!inner(*)
               `)
                 .in("id", tracingIdsList);
+            console.log(error);
             if (data) {
                 for (let i = 0; i < data.length; i++) {
                     let tracing = tracing_model_1.TracingModel.fromDTO(data[i]);
